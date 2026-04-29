@@ -15,10 +15,10 @@
   <section class="relative overflow-hidden hero-bg text-white">
     <header class="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
       <div><div class="text-sm font-semibold tracking-[0.2em] text-white/80">RBTTF | Portal Territorial</div><div class="text-lg font-semibold">Proyecto de Protección de la RBTTF</div></div>
-      <nav class="hidden gap-6 text-sm text-white/85 md:flex"><a href="#explorar">Explorar</a><a href="#mapa">Mapas</a><a href="#resultados">Resultados</a><a href="#ecosistemas">Áreas protegidas</a></nav>
+      <nav class="hidden gap-6 text-sm text-white/85 md:flex"><a href="#mapa">Mapas</a><a href="#resultados">Resultados</a><a href="#ecosistemas">Áreas protegidas</a></nav>
     </header>
     <div class="mx-auto max-w-7xl px-6 pb-20 pt-10 lg:px-10">
-      <div class="relative h-[500px] overflow-hidden rounded-3xl text-white hero-bg">
+      <div id="heroSlide" class="relative h-[500px] overflow-hidden rounded-3xl text-white hero-bg">
         <div class="absolute inset-0 bg-black/35"></div>
         <div class="relative z-10 flex h-full flex-col justify-center px-10">
           <div id="slideTitle" class="text-sm uppercase tracking-[0.2em] text-white/70">Resultado 1</div>
@@ -39,26 +39,91 @@
 
   <section class="bg-white py-14"><div class="mx-auto max-w-7xl px-6 lg:px-10"><div class="mb-10 max-w-4xl"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-800">Resultados del proyecto</p><h2 class="mt-2 text-3xl font-bold">Cuatro componentes estratégicos para entender el portal</h2></div><div id="resultSections"></div></div></section>
 
-  <section id="explorar" class="mx-auto max-w-7xl px-6 py-14 lg:px-10">
-    <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between"><div><p class="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-800">Exploración territorial</p><h2 class="mt-2 text-3xl font-bold">Busca por país o por área protegida</h2><p class="mt-3 max-w-3xl text-stone-600">Filtros visibles por país y por área protegida.</p></div><div class="rounded-2xl border bg-white px-4 py-3 shadow-sm"><span id="count">6 resultados</span></div></div>
-    <div class="rounded-3xl border bg-white p-5 shadow-sm grid gap-4 md:grid-cols-3"><input id="q" class="rounded-2xl border px-4 py-2" placeholder="Buscar territorio o área" oninput="filterSites()"><select id="country" class="rounded-2xl border px-4 py-2" onchange="filterSites()"><option>Todos</option><option>Guatemala</option><option>El Salvador</option><option>Honduras</option><option>Trinacional</option></select><select id="area" class="rounded-2xl border px-4 py-2" onchange="filterSites()"><option>Todas</option><option>Complejo Montecristo</option><option>Parque Nacional Montecristo</option><option>Reserva Biológica Trifinio</option><option>Reserva de Biosfera Trifinio Fraternidad - Guatemala</option></select></div>
-    <div id="siteCards" class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3"></div>
-  </section>
+  <section id="mapa" class="bg-stone-100 py-14"><div class="mx-auto max-w-7xl px-6 lg:px-10"><div class="mb-8 max-w-3xl"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-800">Mapa interactivo</p><h2 class="mt-2 text-3xl font-bold">Mapa de áreas protegidas de la RBTTF</h2><p class="mt-3 text-stone-600">Consulta el visor geográfico asociado a las áreas protegidas priorizadas dentro del Proyecto de Protección de la RBTTF.</p></div><div class="rounded-[2rem] border bg-white shadow-sm grid lg:grid-cols-[1.2fr_0.8fr] overflow-hidden"><div class="min-h-[520px]">
+  <iframe
+    src="https://ctpt.maps.arcgis.com/apps/mapviewer/index.html?webmap=00d04a5dea6f47d89affcedad16ec672&center=-89.35142,14.556626&scale=577790.554289"
+    class="h-[520px] w-full"
+    style="border:0;"
+    allowfullscreen
+    loading="lazy">
+  </iframe>
+</div><div class="p-8"><h3 class="text-2xl font-semibold">Capas recomendadas</h3><div class="mt-6 space-y-4"><div class="rounded-2xl border p-4">Límites trinacionales</div><div class="rounded-2xl border p-4">Ecosistemas</div><div class="rounded-2xl border p-4">Acciones del proyecto</div><div class="rounded-2xl border p-4">Puntos de interés</div></div></div></div></div></section>
 
-  <section id="mapa" class="bg-stone-100 py-14"><div class="mx-auto max-w-7xl px-6 lg:px-10"><div class="mb-8 max-w-3xl"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-800">Mapa interactivo</p><h2 class="mt-2 text-3xl font-bold">El mapa debe ser la pieza central del portal</h2><p class="mt-3 text-stone-600">Este bloque queda listo para incrustar un visor de ArcGIS Online, Experience Builder o un mapa construido con la API de ArcGIS.</p></div><div class="rounded-[2rem] border bg-white shadow-sm grid lg:grid-cols-[1.2fr_0.8fr] overflow-hidden"><div class="soft-bg min-h-[420px] flex items-center justify-center"><div class="rounded-3xl border bg-white/40 px-6 py-5 text-center backdrop-blur-md"><div class="text-lg font-semibold">Espacio para visor ArcGIS</div><div class="mt-1 text-sm">iframe, Web Map, Experience o app embebida</div></div></div><div class="p-8"><h3 class="text-2xl font-semibold">Capas recomendadas</h3><div class="mt-6 space-y-4"><div class="rounded-2xl border p-4">Límites trinacionales</div><div class="rounded-2xl border p-4">Ecosistemas</div><div class="rounded-2xl border p-4">Acciones del proyecto</div><div class="rounded-2xl border p-4">Puntos de interés</div></div></div></div></div></section>
-
-  <section id="ecosistemas" class="mx-auto max-w-7xl px-6 py-14 lg:px-10"><div class="mb-8 max-w-3xl"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-800">Ecosistemas</p><h2 class="mt-2 text-3xl font-bold">Sección visual tipo catálogo</h2></div><div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4" id="ecosistemasCards"></div></section>
+  <section id="ecosistemas" class="mx-auto max-w-7xl px-6 py-14 lg:px-10"><div class="mb-8 max-w-3xl"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-800">Áreas protegidas</p><h2 class="mt-2 text-3xl font-bold">Catálogo de áreas protegidas priorizadas</h2></div><div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4" id="ecosistemasCards"></div></section>
 
 <script>
-const slides=[['Resultado 1','Tenencia de la tierra','Aclaración de la situación de la tierra en la RBTTF','#resultado1'],['Resultado 2','Áreas protegidas y corredores','Gestión y conectividad ecológica','#resultado2'],['Resultado 3','Recursos naturales','Uso sostenible del territorio','#resultado3'],['Resultado 4','Gestión ambiental y social','Marco de sostenibilidad del proyecto','#resultado4']];let si=0;function renderSlide(){slideTitle.textContent=slides[si][0];slideSubtitle.textContent=slides[si][1];slideText.textContent=slides[si][2];slideLink.href=slides[si][3]}function nextSlide(){si=(si+1)%slides.length;renderSlide()}function prevSlide(){si=(si-1+slides.length)%slides.length;renderSlide()}setInterval(nextSlide,5000);
-const results=[{id:'resultado1',n:'Resultado 1',t:'Aclarada la situación de la tenencia de la tierra en la RBTTF',s:'El Proyecto pretende aclarar y registrar la situación actual de la tenencia de la tierra en la RBTTF. Como productos obtenidos, se estableció que el 97% del área del Proyecto se encuentra libre de conflictos de Tenencia de Tierra, registrando únicamente un conflicto en Guatemala y uno en Honduras.'},{id:'resultado2',n:'Resultado 2',t:'Mejorada la Gestión de las Áreas Protegidas en la RBTTF y Corredores Biológicos',s:'Fortalecimiento de la gestión en áreas protegidas y corredores biológicos, dando prioridad a la actualización de Planes de Manejo, equipamiento e infraestructura.'},{id:'resultado3',n:'Resultado 3',t:'Mejorado el uso de los Recursos Naturales en la RBTTF',s:'Financiamiento de convenios para medidas agroambientales y compensación para conservación de la biodiversidad, incluyendo acciones de conservación de suelos.'},{id:'resultado4',n:'Resultado 4',t:'Marco de Gestión Ambiental y Social',s:'Salvaguardas, gobernanza, participación y sostenibilidad social y ambiental como base transversal del proyecto.'}];
+const slides=[
+  ['Resultado 1','Tenencia de la tierra','Aclaración de la situación de la tierra en la RBTTF','#resultado1','r1.png'],
+  ['Resultado 2','Áreas protegidas y corredores','Gestión y conectividad ecológica','#resultado2','r2.png'],
+  ['Resultado 3','Recursos naturales','Uso sostenible del territorio','#resultado3','r3.png'],
+  ['Resultado 4','Gestión ambiental y social','Marco de sostenibilidad del proyecto','#resultado4','r4.png']
+];
+let si=0;
+function renderSlide(){
+  slideTitle.textContent=slides[si][0];
+  slideSubtitle.textContent=slides[si][1];
+  slideText.textContent=slides[si][2];
+  slideLink.href=slides[si][3];
+  const hero=document.getElementById('heroSlide');
+  hero.style.backgroundImage=`url('${slides[si][4]}')`;
+  hero.style.backgroundSize='cover';
+  hero.style.backgroundPosition='center';
+}
+function nextSlide(){si=(si+1)%slides.length;renderSlide()}
+function prevSlide(){si=(si-1+slides.length)%slides.length;renderSlide()}
+renderSlide();
+setInterval(nextSlide,5000);
+const results=[{id:'resultado1',n:'Resultado 1',t:'Aclarada la situación de la tenencia de la tierra en la RBTTF',s:'El Proyecto pretende aclarar y registrar la situación actual de la tenencia de la tierra en la RBTTF. Como productos obtenidos, se estableció que el 97% del área del Proyecto se encuentra libre de conflictos de Tenencia de Tierra, registrando únicamente un conflicto en Guatemala y uno en Honduras.',img:'r1.png'},{id:'resultado2',n:'Resultado 2',t:'Mejorada la Gestión de las Áreas Protegidas en la RBTTF y Corredores Biológicos',s:'Fortalecimiento de la gestión en áreas protegidas y corredores biológicos, dando prioridad a la actualización de Planes de Manejo, equipamiento e infraestructura.',img:'r2.png'},{id:'resultado3',n:'Resultado 3',t:'Mejorado el uso de los Recursos Naturales en la RBTTF',s:'Financiamiento de convenios para medidas agroambientales y compensación para conservación de la biodiversidad, incluyendo acciones de conservación de suelos.',img:'r3.png'},{id:'resultado4',n:'Resultado 4',t:'Marco de Gestión Ambiental y Social',s:'Salvaguardas, gobernanza, participación y sostenibilidad social y ambiental como base transversal del proyecto.',img:'r4.png'}];
 const kpis={resultado1:[['2 Conflictos','de tenencia de tierra identificados'],['97%','del territorio libre de conflictos']],resultado2:[['7','Planes de Manejo actualizados','USD 123,503.67'],['9','AP con inversión en infraestructura','USD 171,875.49'],['9','AP con inversión en equipamiento','USD 119,155.00']],resultado3:[['26','Convenios de Conservación de Biodiversidad','3,392.91 ha'],['46','Convenios de Medidas Agroambientales','12,128.74 ha'],['8,686 Parcelas','con Medidas Agroambientales','200 mil toneladas de suelo retenido'],['2,284','Productores con Conservación de Biodiversidad']]};
 const indicators={resultado1:[['Indicador 1.1','Municipios y AP con información de tenencia','33 / 11','Meta: 33 municipios y 11 AP',100,true],['Indicador 1.2','Litigios identificados y registrados','2','Meta: ≥ 2 litigios',100,true],['Indicador 1.3','Litigios en negociación formal','50%','Meta: ≥ 50% (1 caso)',100,true]],resultado2:[['Indicador 2.1','AP con Planes de Manejo vigentes','11 AP','Base: 6 AP | Meta: 11 AP',100],['Indicador 2.2','AP con inversión','9 AP','Base: 0 AP | Meta: 11 AP',90]],resultado3:[['Indicador 3.1','Contratos de compensación por conservación','26 contratos','Meta: ≥ 15 contratos / 3,409 ha',100],['Indicador 3.2','Contratos agroambientales','46 contratos','Meta: ≥ 30 contratos / 11,974 ha',100]]};
 function cardResult(r){return `<div class="h-full rounded-3xl border bg-white p-6 shadow-sm"><div class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-800">${r.n}</div><h3 class="mt-3 text-lg font-semibold leading-7">${r.t}</h3><a href="#${r.id}" class="mt-4 inline-block text-sm font-medium text-emerald-800">Ver sección →</a></div>`}
 function kpi(v){return `<div class="rounded-2xl border p-6 text-center"><div class="text-3xl font-bold">${v[0]}</div><div class="mt-2 text-sm text-stone-600">${v[1]}</div>${v[2]?`<div class="mt-2 text-xs text-stone-500">${v[2]}</div>`:''}</div>`}
 function ind(v){return `<div class="flex h-full flex-col rounded-2xl border p-4"><div class="text-xs uppercase tracking-[0.12em] text-stone-500">${v[0]}</div><div class="mt-1 text-sm text-stone-600">${v[1]}</div><div class="mt-3 text-2xl font-bold text-emerald-800">${v[2]}</div><div class="text-xs text-stone-500">${v[3]}</div><div class="mt-auto pt-4"><div class="mb-2 text-xs font-medium text-emerald-800">Avance: ${v[4]}% alcanzado</div><div class="mb-4 h-2 w-full rounded-full bg-stone-200"><div class="h-2 rounded-full bg-emerald-600" style="width:${v[4]}%"></div></div>${v[5]?'<a class="block w-full rounded-2xl border border-emerald-200 px-4 py-2 text-center text-sm text-emerald-800" href="#">Medio de verificación</a>':''}</div></div>`}
-document.getElementById('resultados').innerHTML=results.map(cardResult).join('');document.getElementById('resultSections').innerHTML=results.map((r,i)=>`<div id="${r.id}" class="mb-8 overflow-hidden rounded-[2rem] border bg-white shadow-sm grid lg:grid-cols-2"><div class="soft-bg min-h-[320px] flex items-end p-6 ${i%2?'lg:order-2':''}"><div class="rounded-2xl bg-white/20 px-4 py-3 text-white backdrop-blur-sm"><div class="text-xs uppercase tracking-[0.18em]">Sección del portal</div><div class="mt-1 text-lg font-semibold">${r.n}</div></div></div><div class="p-6 lg:p-10"><div class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-800">${r.n}</div><h3 class="mt-3 text-2xl font-bold leading-9">${r.t}</h3><p class="mt-4 leading-7 text-stone-600">${r.s}</p>${kpis[r.id]?`<div class="mt-6 grid gap-4 md:grid-cols-2">${kpis[r.id].map(kpi).join('')}</div>`:''}${indicators[r.id]?`<div class="mt-6 grid gap-4 md:grid-cols-${r.id==='resultado1'?3:2}">${indicators[r.id].map(ind).join('')}</div>`:''}<div class="mt-6"><button class="rounded-2xl bg-stone-900 px-4 py-2 text-sm text-white">Ver mapa asociado</button></div></div></div>`).join('');
-const sites=[['Macizo Montecristo','Trinacional','Complejo Montecristo','Conectividad ecológica','Territorio prioritario para conservación, restauración y articulación trinacional.'],['Esquipulas','Guatemala','Reserva de Biosfera Trifinio Fraternidad - Guatemala','Monitoreo','Seguimiento territorial, acciones comunitarias y gestión del paisaje productivo.'],['Metapán','El Salvador','Parque Nacional Montecristo','Restauración','Intervenciones para recuperación de cobertura y fortalecimiento de resiliencia.'],['Ocotepeque','Honduras','Reserva Biológica Trifinio','Gobernanza','Trabajo con actores locales, evidencia territorial y coordinación interinstitucional.'],['San Ignacio','El Salvador','Parque Nacional Montecristo','Educación ambiental','Procesos de sensibilización, formación y apropiación del territorio.'],['Concepción Las Minas','Guatemala','Reserva de Biosfera Trifinio Fraternidad - Guatemala','Conservación','Acciones orientadas a biodiversidad, manejo sostenible y seguimiento geográfico.']];function filterSites(){const q=document.getElementById('q').value.toLowerCase();const c=document.getElementById('country').value;const a=document.getElementById('area').value;const filtered=sites.filter(s=>(c==='Todos'||s[1]===c)&&(a==='Todas'||s[2]===a)&&(!q||s.join(' ').toLowerCase().includes(q)));document.getElementById('count').textContent=filtered.length+' resultados';document.getElementById('siteCards').innerHTML=filtered.map(s=>`<div class="rounded-3xl border bg-white p-6 shadow-sm"><div class="soft-bg mb-5 h-40 rounded-2xl p-4 text-white"><span class="rounded-full bg-white/15 px-3 py-1 text-xs">${s[1]}</span><div class="mt-12 text-sm">${s[2]}</div></div><h3 class="text-xl font-semibold">${s[0]}</h3><p class="mt-2 text-sm font-medium text-emerald-800">${s[1]}</p><p class="mt-1 text-sm text-stone-500">${s[3]}</p><p class="mt-3 text-sm leading-6 text-stone-600">${s[4]}</p></div>`).join('')}filterSites();document.getElementById('ecosistemasCards').innerHTML=['Bosque nuboso','Bosque pino-encino','Bosque seco','Paisaje productivo'].map(e=>`<div class="overflow-hidden rounded-3xl border bg-white shadow-sm"><div class="h-40 soft-bg"></div><div class="p-5"><h3 class="text-lg font-semibold">${e}</h3><p class="mt-2 text-sm leading-6 text-stone-600">Bloque pensado para imágenes, fichas cortas y vínculos a contenido ampliado.</p></div></div>`).join('');
+document.getElementById('resultados').innerHTML=results.map(cardResult).join('');
+document.getElementById('resultSections').innerHTML=results.map((r,i)=>`<div id="${r.id}" class="mb-8 overflow-hidden rounded-[2rem] border bg-white shadow-sm grid lg:grid-cols-2"><div class="min-h-[320px] flex items-end p-6 ${i%2?'lg:order-2':''}" style="background-image:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.18)),url('${r.img}');background-size:cover;background-position:center;"><div class="rounded-2xl bg-white/20 px-4 py-3 text-white backdrop-blur-sm"><div class="text-xs uppercase tracking-[0.18em]">Sección del portal</div><div class="mt-1 text-lg font-semibold">${r.n}</div></div></div><div class="p-6 lg:p-10"><div class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-800">${r.n}</div><h3 class="mt-3 text-2xl font-bold leading-9">${r.t}</h3><p class="mt-4 leading-7 text-stone-600">${r.s}</p>${kpis[r.id]?`<div class="mt-6 grid gap-4 md:grid-cols-2">${kpis[r.id].map(kpi).join('')}</div>`:''}${indicators[r.id]?`<div class="mt-6 grid gap-4 md:grid-cols-${r.id==='resultado1'?3:2}">${indicators[r.id].map(ind).join('')}</div>`:''}<div class="mt-6"><a href="https://ctpt.maps.arcgis.com/apps/mapviewer/index.html?webmap=00d04a5dea6f47d89affcedad16ec672&center=-89.35142,14.556626&scale=577790.554289" target="_blank" rel="noopener noreferrer" class="inline-block rounded-2xl bg-stone-900 px-4 py-2 text-sm text-white hover:bg-stone-800">Ver mapa asociado</a></div></div></div>`).join('');
+const areasProtegidas=[
+  ['Guatemala','PRM Volcán Suchitán','Parque Regional Municipal','Área priorizada para la gestión territorial y conservación dentro del paisaje de la RBTTF.'],
+  ['Guatemala','AUM Volcán Ipala','Área de Usos Múltiples','Área estratégica para la conservación, uso sostenible y articulación local.'],
+  ['Guatemala','RB Trifinio','Reserva de Biosfera','Área núcleo para la gestión de biodiversidad y conectividad en el territorio guatemalteco.'],
+  ['Guatemala','Volcán Las Víboras','Área protegida','Área vinculada al sistema territorial de conservación de la región Trifinio.'],
+  ['Guatemala','Lago de Güija','Sistema lacustre compartido','Sistema asociado a la conectividad ecológica y gestión compartida del paisaje.'],
+
+  ['El Salvador','PN Montecristo','Parque Nacional','Área prioritaria para la conservación de bosque nuboso y conectividad trinacional.'],
+  ['El Salvador','SR Lago de Güija','Sitio Ramsar','Humedal de importancia regional vinculado a biodiversidad y gestión transfronteriza.'],
+  ['El Salvador','PN San Diego y San Felipe Las Barras','Parque Nacional','Área protegida vinculada a procesos de equipamiento, infraestructura y gestión ambiental.'],
+
+  ['Honduras','PN Montecristo','Parque Nacional','Área clave para la conectividad ecológica y la gestión compartida del macizo Montecristo.'],
+  ['Honduras','RB Güisayote','Reserva Biológica','Área prioritaria para conservación de biodiversidad y fortalecimiento de gestión.'],
+  ['Honduras','RVS Erapuca','Refugio de Vida Silvestre','Área de importancia para la protección de hábitats y especies de vida silvestre.'],
+  ['Honduras','RB El Pital','Reserva Biológica','Área estratégica de montaña vinculada a conservación, biodiversidad y conectividad.']
+];
+
+function paisBadgeColor(pais){
+  if(pais==='Guatemala') return 'bg-blue-50 text-blue-800 border-blue-100';
+  if(pais==='El Salvador') return 'bg-sky-50 text-sky-800 border-sky-100';
+  if(pais==='Honduras') return 'bg-emerald-50 text-emerald-800 border-emerald-100';
+  return 'bg-stone-50 text-stone-800 border-stone-100';
+}
+
+document.getElementById('ecosistemasCards').innerHTML=areasProtegidas.map(a=>`
+  <div class="group overflow-hidden rounded-3xl border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+    <div class="h-40 soft-bg flex items-end p-4 text-white">
+      <span class="rounded-full bg-black/25 px-3 py-1 text-xs backdrop-blur-sm">${a[0]}</span>
+    </div>
+    <div class="p-5">
+      <div class="inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${paisBadgeColor(a[0])}">
+        ${a[0]}
+      </div>
+      <h3 class="mt-3 text-lg font-semibold text-stone-900">${a[1]}</h3>
+      <p class="mt-1 text-sm font-medium text-emerald-800">${a[2]}</p>
+      <p class="mt-3 text-sm leading-6 text-stone-600">${a[3]}</p>
+      <div class="mt-5 flex flex-wrap gap-2 border-t border-stone-100 pt-4">
+        <a href="https://ctpt.maps.arcgis.com/apps/mapviewer/index.html?webmap=00d04a5dea6f47d89affcedad16ec672&center=-89.35142,14.556626&scale=577790.554289" target="_blank" rel="noopener noreferrer" class="rounded-2xl bg-stone-900 px-4 py-2 text-sm text-white hover:bg-stone-800">Ver mapa</a>
+        <a href="#" class="rounded-2xl border border-emerald-200 px-4 py-2 text-sm text-emerald-800 hover:bg-emerald-50">Ficha técnica</a>
+      </div>
+    </div>
+  </div>
+`).join('');
 </script>
 </body>
 </html>
