@@ -108,7 +108,8 @@
           <img 
             src="Organigrama.png" 
             alt="Estructura de gobernanza del Proyecto de Protección de la RBTTF"
-            class="w-full object-contain"
+            class="w-full object-contain cursor-pointer transition hover:opacity-90"
+            onclick="openOrganigramaModal()"
           >
         </div>
       </div>
@@ -248,5 +249,54 @@ function renderAreasProtegidas(){
 
 renderAreasProtegidas();
 </script>
+
+<!-- Modal para ampliar y descargar organigrama -->
+<div id="organigramaModal" onclick="closeOrganigramaModal()" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4">
+  <button onclick="closeOrganigramaModal()" class="absolute right-5 top-5 z-50 rounded-full bg-white/15 px-4 py-2 text-3xl leading-none text-white backdrop-blur-sm transition hover:bg-white/25" aria-label="Cerrar visor">
+    &times;
+  </button>
+
+  <div onclick="event.stopPropagation()" class="relative max-h-[92vh] w-full max-w-6xl overflow-auto rounded-2xl bg-white p-3 shadow-2xl">
+    <img 
+      src="Organigrama.png" 
+      alt="Estructura de gobernanza del Proyecto de Protección de la RBTTF ampliada"
+      class="mx-auto max-h-[82vh] w-full object-contain"
+    >
+
+    <div class="mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-stone-200 pt-3">
+      <div class="text-sm font-medium text-stone-700">Estructura de gobernanza del proyecto</div>
+      <a 
+        href="Organigrama.png" 
+        download
+        class="rounded-2xl bg-stone-900 px-4 py-2 text-sm text-white transition hover:bg-stone-800"
+      >
+        Descargar imagen
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+function openOrganigramaModal(){
+  const modal=document.getElementById('organigramaModal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  document.body.style.overflow='hidden';
+}
+
+function closeOrganigramaModal(){
+  const modal=document.getElementById('organigramaModal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+  document.body.style.overflow='';
+}
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    closeOrganigramaModal();
+  }
+});
+</script>
+
 </body>
 </html>
