@@ -102,15 +102,28 @@
         <div class="mb-5">
           <p class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-800">Gobernanza del proyecto</p>
           <h3 class="mt-2 text-2xl font-bold text-stone-900">Estructura de coordinación y gestión</h3>
+          <p class="mt-4 text-sm leading-6 text-stone-600">
+            Se presenta el organigrama del Proyecto RBTTF y cómo se vincula en la estructura de la Comisión Trinacional del Plan Trifinio.
+          </p>
         </div>
 
         <div class="overflow-hidden rounded-2xl border border-stone-100 bg-stone-50">
-          <img 
-            src="Organigrama.png" 
-            alt="Estructura de gobernanza del Proyecto de Protección de la RBTTF"
-            class="w-full object-contain cursor-pointer transition hover:opacity-90"
-            onclick="openOrganigramaModal()"
-          >
+          <button type="button" onclick="openOrganigramaModal()" class="group block w-full cursor-zoom-in">
+            <img 
+              src="Organigrama.png" 
+              alt="Estructura de gobernanza del Proyecto de Protección de la RBTTF"
+              class="w-full object-contain transition group-hover:opacity-90"
+            >
+          </button>
+        </div>
+
+        <div class="mt-4 flex flex-wrap gap-3">
+          <button type="button" onclick="openOrganigramaModal()" class="rounded-2xl bg-stone-900 px-4 py-2 text-sm text-white transition hover:bg-stone-800">
+            Ampliar organigrama
+          </button>
+          <a href="Organigrama.png" download class="rounded-2xl border border-emerald-200 px-4 py-2 text-sm text-emerald-800 transition hover:bg-emerald-50">
+            Descargar organigrama
+          </a>
         </div>
       </div>
     </div>
@@ -191,20 +204,20 @@ document.getElementById('resultSections').innerHTML=results.map((r,i)=>`${r.id==
   <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4" id="ecosistemasCards"></div>
 </section>`:''}<div id="${r.id}" class="mb-8 overflow-hidden rounded-[2rem] border bg-white shadow-sm grid lg:grid-cols-2"><div class="min-h-[320px] flex items-end p-6 ${i%2?'lg:order-2':''}" style="background-image:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.18)),url('${r.img}');background-size:cover;background-position:center;"><div class="rounded-2xl bg-white/20 px-4 py-3 text-white backdrop-blur-sm"><div class="text-xs uppercase tracking-[0.18em]">Sección del portal</div><div class="mt-1 text-lg font-semibold">${r.n}</div></div></div><div class="p-6 lg:p-10"><div class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-800">${r.n}</div><h3 class="mt-3 text-2xl font-bold leading-9">${r.t}</h3><p class="mt-4 leading-7 text-stone-600">${r.s}</p>${kpis[r.id]?`<div class="mt-6 grid gap-4 md:grid-cols-2">${kpis[r.id].map(kpi).join('')}</div>`:''}${indicators[r.id]?`<div class="mt-6 grid gap-4 md:grid-cols-${r.id==='resultado1'?3:2}">${indicators[r.id].map(ind).join('')}</div>`:''}<div class="mt-6"><a href="https://ctpt.maps.arcgis.com/apps/mapviewer/index.html?webmap=00d04a5dea6f47d89affcedad16ec672&center=-89.35142,14.556626&scale=577790.554289" target="_blank" rel="noopener noreferrer" class="inline-block rounded-2xl bg-stone-900 px-4 py-2 text-sm text-white hover:bg-stone-800">Ver mapa asociado</a></div></div></div>`).join('');
 const areasProtegidas=[
-  ['El Salvador','PN Montecristo','Parque Nacional','Área prioritaria para la conservación de bosque nuboso y conectividad trinacional.'],
-  ['El Salvador','SR Lago de Güija','Sitio Ramsar','Humedal de importancia regional vinculado a biodiversidad y gestión transfronteriza.'],
-  ['El Salvador','PN San Diego y San Felipe Las Barras','Parque Nacional','Área protegida vinculada a procesos de equipamiento, infraestructura y gestión ambiental.'],
+  ['El Salvador','PN Montecristo','Parque Nacional','Área prioritaria para la conservación de bosque nuboso y conectividad trinacional.','Montecristo El Salvador.jpg'],
+  ['El Salvador','SR Lago de Güija','Sitio Ramsar','Humedal de importancia regional vinculado a biodiversidad y gestión transfronteriza.','Lago Guija.jpeg'],
+  ['El Salvador','PN San Diego y San Felipe Las Barras','Parque Nacional','Área protegida vinculada a procesos de equipamiento, infraestructura y gestión ambiental.','San Diego La Barra.jpg'],
 
-  ['Guatemala','PRM Volcán Suchitán','Parque Regional Municipal','Área priorizada para la gestión territorial y conservación dentro del paisaje de la RBTTF.'],
-  ['Guatemala','AUM Volcán Ipala','Área de Usos Múltiples','Área estratégica para la conservación, uso sostenible y articulación local.'],
-  ['Guatemala','RB Trifinio','Reserva de Biosfera','Área núcleo para la gestión de biodiversidad y conectividad en el territorio guatemalteco.'],
-  ['Guatemala','Volcán Las Víboras','Área protegida','Área vinculada al sistema territorial de conservación de la región Trifinio.'],
-  ['Guatemala','Lago de Güija','Sistema lacustre compartido','Sistema asociado a la conectividad ecológica y gestión compartida del paisaje.'],
+  ['Guatemala','PRM Volcán Suchitán','Parque Regional Municipal','Área priorizada para la gestión territorial y conservación dentro del paisaje de la RBTTF.','Volcan Suchitan.jpg'],
+  ['Guatemala','AUM Volcán Ipala','Área de Usos Múltiples','Área estratégica para la conservación, uso sostenible y articulación local.','Volcan Ipala.png'],
+  ['Guatemala','RB Trifinio','Reserva de Biosfera','Área núcleo para la gestión de biodiversidad y conectividad en el territorio guatemalteco.','RBT Guatemala.png'],
+  ['Guatemala','Volcán Las Víboras','Área protegida','Área vinculada al sistema territorial de conservación de la región Trifinio.','r2.png'],
+  ['Guatemala','Lago de Güija','Sistema lacustre compartido','Sistema asociado a la conectividad ecológica y gestión compartida del paisaje.','Lago Guija.jpeg'],
 
-  ['Honduras','PN Montecristo','Parque Nacional','Área clave para la conectividad ecológica y la gestión compartida del macizo Montecristo.'],
-  ['Honduras','RB Güisayote','Reserva Biológica','Área prioritaria para conservación de biodiversidad y fortalecimiento de gestión.'],
-  ['Honduras','RVS Erapuca','Refugio de Vida Silvestre','Área de importancia para la protección de hábitats y especies de vida silvestre.'],
-  ['Honduras','RB El Pital','Reserva Biológica','Área estratégica de montaña vinculada a conservación, biodiversidad y conectividad.']
+  ['Honduras','PN Montecristo','Parque Nacional','Área clave para la conectividad ecológica y la gestión compartida del macizo Montecristo.','r1.png'],
+  ['Honduras','RB Güisayote','Reserva Biológica','Área prioritaria para conservación de biodiversidad y fortalecimiento de gestión.','Guisayote.jpg'],
+  ['Honduras','RVS Erapuca','Refugio de Vida Silvestre','Área de importancia para la protección de hábitats y especies de vida silvestre.','r3.png'],
+  ['Honduras','RB El Pital','Reserva Biológica','Área estratégica de montaña vinculada a conservación, biodiversidad y conectividad.','El Pital.jpg']
 ];
 
 function paisBadgeColor(pais){
@@ -228,8 +241,15 @@ function renderAreasProtegidas(){
 
   document.getElementById('ecosistemasCards').innerHTML=filtered.map(a=>`
     <div class="group overflow-hidden rounded-3xl border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-      <div class="h-40 soft-bg flex items-end p-4 text-white">
-        <span class="rounded-full bg-black/25 px-3 py-1 text-xs backdrop-blur-sm">${a[0]}</span>
+      <div class="relative h-48 overflow-hidden bg-stone-200">
+        <img 
+          src="${a[4]}" 
+          alt="${a[1]}" 
+          class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          onerror="this.style.display='none'; this.parentElement.classList.add('soft-bg');"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent"></div>
+        <span class="absolute bottom-4 left-4 rounded-full bg-black/35 px-3 py-1 text-xs text-white backdrop-blur-sm">${a[0]}</span>
       </div>
       <div class="p-5">
         <div class="inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${paisBadgeColor(a[0])}">
@@ -250,26 +270,23 @@ function renderAreasProtegidas(){
 renderAreasProtegidas();
 </script>
 
-<!-- Modal para ampliar y descargar organigrama -->
-<div id="organigramaModal" onclick="closeOrganigramaModal()" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4">
-  <button onclick="closeOrganigramaModal()" class="absolute right-5 top-5 z-50 rounded-full bg-white/15 px-4 py-2 text-3xl leading-none text-white backdrop-blur-sm transition hover:bg-white/25" aria-label="Cerrar visor">
+
+
+<!-- Modal organigrama ampliado -->
+<div id="organigramaModal" onclick="closeOrganigramaModal()" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,.85); padding:20px; align-items:center; justify-content:center;">
+  <button onclick="closeOrganigramaModal()" type="button" style="position:absolute; top:18px; right:24px; z-index:10000; color:white; background:rgba(255,255,255,.18); border:0; border-radius:999px; font-size:34px; line-height:1; padding:6px 14px; cursor:pointer;" aria-label="Cerrar visor">
     &times;
   </button>
 
-  <div onclick="event.stopPropagation()" class="relative max-h-[92vh] w-full max-w-6xl overflow-auto rounded-2xl bg-white p-3 shadow-2xl">
+  <div onclick="event.stopPropagation()" style="position:relative; width:min(1200px,96vw); max-height:92vh; overflow:auto; background:white; border-radius:18px; padding:14px; box-shadow:0 20px 60px rgba(0,0,0,.45);">
     <img 
       src="Organigrama.png" 
       alt="Estructura de gobernanza del Proyecto de Protección de la RBTTF ampliada"
-      class="mx-auto max-h-[82vh] w-full object-contain"
+      style="display:block; width:100%; height:auto; max-height:82vh; object-fit:contain; margin:0 auto;"
     >
-
-    <div class="mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-stone-200 pt-3">
-      <div class="text-sm font-medium text-stone-700">Estructura de gobernanza del proyecto</div>
-      <a 
-        href="Organigrama.png" 
-        download
-        class="rounded-2xl bg-stone-900 px-4 py-2 text-sm text-white transition hover:bg-stone-800"
-      >
+    <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between; border-top:1px solid #e7e5e4; margin-top:12px; padding-top:12px;">
+      <div style="font-size:14px; font-weight:600; color:#44403c;">Estructura de gobernanza del proyecto</div>
+      <a href="Organigrama.png" download style="display:inline-block; background:#1c1917; color:white; padding:10px 16px; border-radius:16px; text-decoration:none; font-size:14px;">
         Descargar imagen
       </a>
     </div>
@@ -278,23 +295,19 @@ renderAreasProtegidas();
 
 <script>
 function openOrganigramaModal(){
-  const modal=document.getElementById('organigramaModal');
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
+  var modal=document.getElementById('organigramaModal');
+  if(!modal){ return; }
+  modal.style.display='flex';
   document.body.style.overflow='hidden';
 }
-
 function closeOrganigramaModal(){
-  const modal=document.getElementById('organigramaModal');
-  modal.classList.add('hidden');
-  modal.classList.remove('flex');
+  var modal=document.getElementById('organigramaModal');
+  if(!modal){ return; }
+  modal.style.display='none';
   document.body.style.overflow='';
 }
-
 document.addEventListener('keydown',function(e){
-  if(e.key==='Escape'){
-    closeOrganigramaModal();
-  }
+  if(e.key==='Escape'){ closeOrganigramaModal(); }
 });
 </script>
 
