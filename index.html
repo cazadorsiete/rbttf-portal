@@ -176,18 +176,10 @@ document.getElementById('resultados').innerHTML=results.map(cardResult).join('')
 document.getElementById('resultSections').innerHTML=results.map((r,i)=>`${r.id==='resultado3'?`<!-- ===================== MAPA RESULTADO 2 ===================== -->
 <section class="mb-8 overflow-hidden rounded-[2rem] border bg-white shadow-sm">
   <div class="border-b bg-stone-50 px-8 py-5">
-    <div class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-800">
-      Resultado 2
-    </div>
-
-    <h3 class="mt-2 text-2xl font-bold text-stone-900">
-      Mapa de Áreas Protegidas y Corredores Biológicos
-    </h3>
-
-    <p class="mt-2 text-sm leading-6 text-stone-600">
-      Visualización territorial de las áreas protegidas y corredores biológicos vinculados al Proyecto RBTTF.
-    </p>
-  </div>
+  <h3 class="text-2xl font-bold text-stone-900">
+    Inversiones de infraestructura, equipamiento y planes maestros en Áreas Protegidas
+  </h3>
+</div>
 
   <iframe
     src="https://www.arcgis.com/apps/dashboards/30caacbce2ed4cba84bf8ff49bb3564e"
