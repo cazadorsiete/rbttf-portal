@@ -173,7 +173,41 @@ function cardResult(r){return `<div class="h-full rounded-3xl border bg-white p-
 function kpi(v){return `<div class="rounded-2xl border p-6 text-center"><div class="text-3xl font-bold">${v[0]}</div><div class="mt-2 text-sm text-stone-600">${v[1]}</div>${v[2]?`<div class="mt-2 text-xs text-stone-500">${v[2]}</div>`:''}</div>`}
 function ind(v){return `<div class="flex h-full flex-col rounded-2xl border p-4"><div class="text-xs uppercase tracking-[0.12em] text-stone-500">${v[0]}</div><div class="mt-1 text-sm text-stone-600">${v[1]}</div><div class="mt-3 text-2xl font-bold text-emerald-800">${v[2]}</div><div class="text-xs text-stone-500">${v[3]}</div><div class="mt-auto pt-4"><div class="mb-2 text-xs font-medium text-emerald-800">Avance: ${v[4]}% alcanzado</div><div class="mb-4 h-2 w-full rounded-full bg-stone-200"><div class="h-2 rounded-full bg-emerald-600" style="width:${v[4]}%"></div></div>${v[5]?'<a class="block w-full rounded-2xl border border-emerald-200 px-4 py-2 text-center text-sm text-emerald-800" href="#">Medio de verificación</a>':''}</div></div>`}
 document.getElementById('resultados').innerHTML=results.map(cardResult).join('');
-document.getElementById('resultSections').innerHTML=results.map((r,i)=>`${r.id==='resultado3'?`<section id="ecosistemas" class="mx-auto max-w-7xl px-6 py-14 lg:px-10">
+document.getElementById('resultSections').innerHTML=results.map((r,i)=>`${r.id==='resultado3'?`<!-- ===================== MAPA RESULTADO 2 ===================== -->
+<section class="mb-8 overflow-hidden rounded-[2rem] border bg-white shadow-sm">
+  <div class="border-b bg-stone-50 px-8 py-5">
+    <div class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-800">
+      Resultado 2
+    </div>
+
+    <h3 class="mt-2 text-2xl font-bold text-stone-900">
+      Mapa de Áreas Protegidas y Corredores Biológicos
+    </h3>
+
+    <p class="mt-2 text-sm leading-6 text-stone-600">
+      Visualización territorial de las áreas protegidas y corredores biológicos vinculados al Proyecto RBTTF.
+    </p>
+  </div>
+
+  <iframe
+    src="https://www.arcgis.com/apps/dashboards/30caacbce2ed4cba84bf8ff49bb3564e"
+    class="h-[720px] w-full"
+    style="border:0;"
+    allowfullscreen
+    loading="lazy">
+  </iframe>
+
+  <div class="border-t bg-white px-8 py-5">
+    <a
+      href="https://www.arcgis.com/apps/dashboards/30caacbce2ed4cba84bf8ff49bb3564e"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block rounded-2xl bg-stone-900 px-5 py-3 text-sm text-white hover:bg-stone-800">
+      Ver mapa del resultado en pantalla completa
+    </a>
+  </div>
+</section>
+<section id="ecosistemas" class="mx-auto max-w-7xl px-6 py-14 lg:px-10">
   <div class="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
     <div class="max-w-3xl">
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-800">Áreas protegidas</p>
