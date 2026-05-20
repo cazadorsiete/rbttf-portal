@@ -9,8 +9,7 @@
     html{scroll-behavior:smooth} body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
     .hero-bg{background:linear-gradient(135deg,#1f3d2d 0%,#335c41 45%,#6c7a44 100%)}
     .soft-bg{background:linear-gradient(135deg,#d4e4cf 0%,#a8c7a0 50%,#7b9367 100%)}
-    .ficha-panel{max-height:0;overflow:hidden;opacity:0;transition:all .45s ease;margin-top:0}
-    .ficha-panel.open{max-height:5000px;opacity:1;margin-top:16px}
+    
   </style>
 </head>
 <body class="bg-stone-50 text-stone-900">
@@ -205,7 +204,7 @@ document.getElementById('resultSections').innerHTML=results.map((r,i)=>`${r.id==
 
   <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4" id="ecosistemasCards"></div>
 </section>`:''}<div id="${r.id}" class="mb-8 overflow-hidden rounded-[2rem] border bg-white shadow-sm grid lg:grid-cols-2"><div class="min-h-[320px] flex items-end p-6 ${i%2?'lg:order-2':''}" style="background-image:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.18)),url('${r.img}');background-size:cover;background-position:center;"><div class="rounded-2xl bg-white/20 px-4 py-3 text-white backdrop-blur-sm"><div class="text-xs uppercase tracking-[0.18em]">Sección del portal</div><div class="mt-1 text-lg font-semibold">${r.n}</div></div></div><div class="p-6 lg:p-10"><div class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-800">${r.n}</div><h3 class="mt-3 text-2xl font-bold leading-9">${r.t}</h3><p class="mt-4 leading-7 text-stone-600">${r.s}</p>${kpis[r.id]?`<div class="mt-6 grid gap-4 md:grid-cols-2">${kpis[r.id].map(kpi).join('')}</div>`:''}${indicators[r.id]?`<div class="mt-6 grid gap-4 md:grid-cols-${r.id==='resultado1'?3:2}">${indicators[r.id].map(ind).join('')}</div>`:''}<div class="mt-6"><a href="${r.id==='resultado1'
-  ? 'https://www.arcgis.com/apps/dashboards/ea2db48143054fc0beece12f063496e4'
+  ? 'https://ctpt.maps.arcgis.com/apps/dashboards/ea2db48143054fc0beece12f063496e4'
   : 'https://ctpt.maps.arcgis.com/apps/mapviewer/index.html?webmap=00d04a5dea6f47d89affcedad16ec672&center=-89.35142,14.556626&scale=577790.554289'}"  target="_blank" rel="noopener noreferrer" class="inline-block rounded-2xl bg-stone-900 px-4 py-2 text-sm text-white hover:bg-stone-800">Ver mapa asociado</a></div></div></div>`).join('');
 const areasProtegidas=[
   {
@@ -213,8 +212,8 @@ const areasProtegidas=[
     nombre:'PN Montecristo',
     categoria:'Parque Nacional',
     descripcion:'Área prioritaria para la conservación de bosque nuboso y conectividad trinacional.',
-    imagen:'Montecristo El Salvador.jpg',
-    ficha:'Ficha PN Montecristo El Salvador.png',
+    imagen:'PN_Montecristo_El_Salvador.jpg',
+    ficha:'F_PN_Montecristo_El_Salvador.png',
     disponible:true
   },
   {
@@ -222,7 +221,7 @@ const areasProtegidas=[
     nombre:'SR Lago de Güija',
     categoria:'Sitio Ramsar',
     descripcion:'Humedal de importancia regional vinculado a biodiversidad y gestión transfronteriza.',
-    imagen:'Lago Guija.jpeg',
+    imagen:'r1.png',
     ficha:null,
     disponible:false
   },
@@ -231,18 +230,17 @@ const areasProtegidas=[
     nombre:'PN San Diego y San Felipe Las Barras',
     categoria:'Parque Nacional',
     descripcion:'Área protegida vinculada a procesos de equipamiento, infraestructura y gestión ambiental.',
-    imagen:'San Diego La Barra.jpg',
+    imagen:'r2.png',
     ficha:null,
     disponible:false
   },
-
   {
     pais:'Guatemala',
     nombre:'PRM Volcán Suchitán',
     categoria:'Parque Regional Municipal',
     descripcion:'Área priorizada para la gestión territorial y conservación dentro del paisaje de la RBTTF.',
-    imagen:'PRM Volcán Suchitán.jpg',
-    ficha:'Ficha PRM Volcán Suchitán.png',
+    imagen:'PRM_Volcan_Suchitan.jpg',
+    ficha:'F_PRM_Volcan_Suchitan.png',
     disponible:true
   },
   {
@@ -250,8 +248,8 @@ const areasProtegidas=[
     nombre:'AUM Volcán Ipala',
     categoria:'Área de Usos Múltiples',
     descripcion:'Área estratégica para la conservación, uso sostenible y articulación local.',
-    imagen:'AUM Volcán Ipala.png',
-    ficha:'Ficha AUM Volcán Ipala.png',
+    imagen:'AUM_Volcan_Ipala.png',
+    ficha:'F_AUM_Volcan_Ipala.png',
     disponible:true
   },
   {
@@ -259,8 +257,8 @@ const areasProtegidas=[
     nombre:'RB Trifinio',
     categoria:'Reserva de Biosfera',
     descripcion:'Área núcleo para la gestión de biodiversidad y conectividad en el territorio guatemalteco.',
-    imagen:'RB Trifinio.png',
-    ficha:'Ficha RB Trifinio.png',
+    imagen:'RB_Trifinio.png',
+    ficha:'F_RB_Trifinio.png',
     disponible:true
   },
   {
@@ -268,7 +266,7 @@ const areasProtegidas=[
     nombre:'Volcán Las Víboras',
     categoria:'Área protegida',
     descripcion:'Área vinculada al sistema territorial de conservación de la región Trifinio.',
-    imagen:'r2.png',
+    imagen:'r3.png',
     ficha:null,
     disponible:false
   },
@@ -277,11 +275,10 @@ const areasProtegidas=[
     nombre:'Lago de Güija',
     categoria:'Sistema lacustre compartido',
     descripcion:'Sistema asociado a la conectividad ecológica y gestión compartida del paisaje.',
-    imagen:'Lago Guija.jpeg',
+    imagen:'r4.png',
     ficha:null,
     disponible:false
   },
-
   {
     pais:'Honduras',
     nombre:'PN Montecristo',
@@ -296,8 +293,8 @@ const areasProtegidas=[
     nombre:'RB Güisayote',
     categoria:'Reserva Biológica',
     descripcion:'Área prioritaria para conservación de biodiversidad y fortalecimiento de gestión.',
-    imagen:'RB Güisayote.jpg',
-    ficha:'Ficha RB Güisayote.png',
+    imagen:'RB_Guisayote.jpg',
+    ficha:'F_RB_Guisayote.png',
     disponible:true
   },
   {
@@ -305,8 +302,8 @@ const areasProtegidas=[
     nombre:'RVS Erapuca',
     categoria:'Refugio de Vida Silvestre',
     descripcion:'Área de importancia para la protección de hábitats y especies de vida silvestre.',
-    imagen:'RVS Erapuca.jpg',
-    ficha:'Ficha RVS Erapuca.png',
+    imagen:'RVS_Erapuca.jpg',
+    ficha:'F_RVS_Erapuca.png',
     disponible:true
   },
   {
@@ -314,8 +311,8 @@ const areasProtegidas=[
     nombre:'RB El Pital',
     categoria:'Reserva Biológica',
     descripcion:'Área estratégica de montaña vinculada a conservación, biodiversidad y conectividad.',
-    imagen:'RB El Pital.jpg',
-    ficha:'Ficha RB El Pital.png',
+    imagen:'RB_El_Pital.jpg',
+    ficha:'F_RB_El_Pital.png',
     disponible:true
   }
 ];
@@ -361,9 +358,7 @@ function renderAreasProtegidas(){
 
   document.getElementById('apCount').textContent=filtered.length;
 
-  document.getElementById('ecosistemasCards').innerHTML=filtered.map((a,index)=>{
-    const fichaId='ficha_'+index+'_'+a.nombre.replace(/\W+/g,'_');
-    return `
+  document.getElementById('ecosistemasCards').innerHTML=filtered.map(a=>`
     <div class="group overflow-hidden rounded-3xl border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
       <div class="relative h-56 overflow-hidden bg-stone-200">
         <img 
@@ -375,48 +370,22 @@ function renderAreasProtegidas(){
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
         <span class="absolute bottom-4 left-4 rounded-full bg-black/35 px-3 py-1 text-xs text-white backdrop-blur-sm">${a.pais}</span>
       </div>
-
       <div class="p-5">
-        <div class="inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${paisBadgeColor(a.pais)}">
-          ${a.pais}
-        </div>
-
+        <div class="inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${paisBadgeColor(a.pais)}">${a.pais}</div>
         <h3 class="mt-3 text-lg font-semibold text-stone-900 leading-7">${a.nombre}</h3>
         <p class="mt-1 text-sm font-medium text-emerald-800">${a.categoria}</p>
         <p class="mt-3 text-sm leading-6 text-stone-600">${a.descripcion}</p>
-
         <div class="mt-5 flex flex-wrap gap-2 border-t border-stone-100 pt-4">
-          <a 
-            href="https://ctpt.maps.arcgis.com/apps/mapviewer/index.html?webmap=00d04a5dea6f47d89affcedad16ec672&center=-89.35142,14.556626&scale=577790.554289" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="rounded-2xl bg-stone-900 px-4 py-2 text-sm text-white hover:bg-stone-800">
-            Ver mapa
-          </a>
-
+          <a href="https://ctpt.maps.arcgis.com/apps/mapviewer/index.html?webmap=00d04a5dea6f47d89affcedad16ec672&center=-89.35142,14.556626&scale=577790.554289" target="_blank" rel="noopener noreferrer" class="rounded-2xl bg-stone-900 px-4 py-2 text-sm text-white hover:bg-stone-800">Ver mapa</a>
           ${
             a.disponible && a.ficha
-            ? `
-              <button 
-                type="button"
-                onclick="openFichaTecnica('${a.ficha}','${a.nombre}')"
-                class="rounded-2xl border border-emerald-200 px-4 py-2 text-sm text-emerald-800 hover:bg-emerald-50">
-                Ficha técnica
-              </button>
-            `
-            : `
-              <button 
-                type="button"
-                class="cursor-not-allowed rounded-2xl border border-stone-200 bg-stone-100 px-4 py-2 text-sm text-stone-400">
-                Ficha pendiente
-              </button>
-            `
+            ? `<button type="button" onclick="openFichaTecnica('${a.ficha}','${a.nombre}')" class="rounded-2xl border border-emerald-200 px-4 py-2 text-sm text-emerald-800 hover:bg-emerald-50">Ficha técnica</button>`
+            : `<button type="button" class="cursor-not-allowed rounded-2xl border border-stone-200 bg-stone-100 px-4 py-2 text-sm text-stone-400">Ficha pendiente</button>`
           }
         </div>
-</div>
+      </div>
     </div>
-    `;
-  }).join('');
+  `).join('');
 }
 
 renderAreasProtegidas();
