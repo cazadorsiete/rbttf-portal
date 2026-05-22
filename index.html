@@ -259,7 +259,7 @@ const areasProtegidas=[
     nombre:'SR Lago de Güija',
     categoria:'Sitio Ramsar',
     descripcion:'Humedal de importancia regional vinculado a biodiversidad y gestión transfronteriza.',
-    imagen:'r1.png',
+    imagen:'SR_Lago_de_Guija.jpg',
     ficha:null,
     disponible:false
   },
@@ -268,7 +268,7 @@ const areasProtegidas=[
     nombre:'PN San Diego y San Felipe Las Barras',
     categoria:'Parque Nacional',
     descripcion:'Área protegida vinculada a procesos de equipamiento, infraestructura y gestión ambiental.',
-    imagen:'r2.png',
+    imagen:'PN_San_Diego_y_San_Felipe_Las_Barras.jpg',
     ficha:null,
     disponible:false
   },
@@ -304,7 +304,7 @@ const areasProtegidas=[
     nombre:'Volcán Las Víboras',
     categoria:'Área protegida',
     descripcion:'Área vinculada al sistema territorial de conservación de la región Trifinio.',
-    imagen:'r3.png',
+    imagen:'Volcan_Las_Viboras.jpg',
     ficha:null,
     disponible:false
   },
@@ -313,7 +313,7 @@ const areasProtegidas=[
     nombre:'Lago de Güija',
     categoria:'Sistema lacustre compartido',
     descripcion:'Sistema asociado a la conectividad ecológica y gestión compartida del paisaje.',
-    imagen:'r4.png',
+    imagen:'Lago_de_Guija_Guatemala.jpg',
     ficha:null,
     disponible:false
   },
@@ -322,7 +322,7 @@ const areasProtegidas=[
     nombre:'PN Montecristo',
     categoria:'Parque Nacional',
     descripcion:'Área clave para la conectividad ecológica y la gestión compartida del macizo Montecristo.',
-    imagen:'r1.png',
+    imagen:'PN_Montecristo_Honduras.jpg',
     ficha:null,
     disponible:false
   },
@@ -355,6 +355,46 @@ const areasProtegidas=[
   }
 ];
 
+
+function imageCandidates(file){
+  if(!file) return [];
+  const clean=file.trim()
+    .replace(/\s+_/g,'_')
+    .replace(/_\s+/g,'_')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const files=[file, clean];
+
+  const noSpaces=clean.replace(/\s+/g,'_');
+  files.push(noSpaces);
+
+  const jpg=noSpaces.replace(/\.(png|jpeg|webp)$/i,'.jpg');
+  const png=noSpaces.replace(/\.(jpg|jpeg|webp)$/i,'.png');
+  const jpeg=noSpaces.replace(/\.(jpg|png|webp)$/i,'.jpeg');
+  const webp=noSpaces.replace(/\.(jpg|jpeg|png)$/i,'.webp');
+  files.push(jpg,png,jpeg,webp);
+
+  const folders=['','./','img/','images/','imagenes/','assets/','assets/img/','assets/images/','fotos/','fotografias/'];
+  const out=[];
+  folders.forEach(folder=>{
+    files.forEach(name=>{
+      if(name && !out.includes(folder+name)) out.push(folder+name);
+    });
+  });
+  return out;
+}
+
+function tryNextImage(img){
+  const sources=(img.dataset.sources||'').split('|').filter(Boolean);
+  let index=parseInt(img.dataset.index||'0',10)+1;
+  if(index < sources.length){
+    img.dataset.index=index;
+    img.src=sources[index];
+    return;
+  }
+  img.style.display='none';
+  img.parentElement.classList.add('ap-photo-fallback');
+}
+
 function paisBadgeColor(pais){
   if(pais==='El Salvador') return 'bg-sky-50 text-sky-800 border-sky-100';
   if(pais==='Guatemala') return 'bg-blue-50 text-blue-800 border-blue-100';
@@ -368,10 +408,14 @@ function openFichaTecnica(img,nombre){
   const title=document.getElementById('fichaTecnicaTitulo');
   const download=document.getElementById('fichaTecnicaDescarga');
   if(!modal || !image || !title || !download) return;
-  image.src=img;
+  const candidates=imageCandidates(img);
+  image.dataset.sources=candidates.join('|');
+  image.dataset.index='0';
+  image.onerror=function(){ tryNextImage(image); };
+  image.src=candidates[0] || img;
   image.alt='Ficha técnica '+nombre;
   title.textContent=nombre;
-  download.href=img;
+  download.href=candidates[0] || img;
   download.download=img;
   modal.style.display='flex';
   document.body.style.overflow='hidden';
@@ -400,10 +444,12 @@ function renderAreasProtegidas(){
     <div class="group overflow-hidden rounded-3xl border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
       <div class="relative h-56 overflow-hidden bg-stone-200">
         <img 
-          src="${a.imagen}" 
+          src="${imageCandidates(a.imagen)[0]}" 
+          data-sources="${imageCandidates(a.imagen).join('|')}"
+          data-index="0"
           alt="${a.nombre}" 
           class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-          onerror="this.style.display='none'; this.parentElement.classList.add('soft-bg');"
+          onerror="tryNextImage(this)"
         >
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
         <span class="absolute bottom-4 left-4 rounded-full bg-black/35 px-3 py-1 text-xs text-white backdrop-blur-sm">${a.pais}</span>
