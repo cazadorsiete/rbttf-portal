@@ -234,26 +234,7 @@ document.getElementById('resultSections').innerHTML=results.map((r,i)=>`${r.id==
   </div>
 
   <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4" id="ecosistemasCards"></div>
-</section>`:''}<div id="${r.id}" class="mb-8 overflow-hidden rounded-[2rem] border bg-white shadow-sm grid lg:grid-cols-2"><div class="min-h-[320px] flex items-end p-6 ${i%2?'lg:order-2':''}" style="background-image:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.18)),url('${r.img}');background-size:cover;background-position:center;"><div class="rounded-2xl bg-white/20 px-4 py-3 text-white backdrop-blur-sm"><div class="text-xs uppercase tracking-[0.18em]">Sección del portal</div><div class="mt-1 text-lg font-semibold">${r.n}</div></div></div><div class="p-6 lg:p-10"><div class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-800">${r.n}</div><h3 class="mt-3 text-2xl font-bold leading-9">${r.t}</h3><p class="mt-4 leading-7 text-stone-600">${r.s}</p>${kpis[r.id]?`<div class="mt-6 grid gap-4 md:grid-cols-2">${kpis[r.id].map(kpi).join('')}</div>`:''}${indicators[r.id]?`<div class="mt-6 grid gap-4 md:grid-cols-${r.id==='resultado1'?3:2}">${indicators[r.id].map(ind).join('')}</div>`:''}
-
-${r.id==='resultado4'
-? `<div class="mt-8 rounded-3xl border border-emerald-100 bg-emerald-50 p-5">
-    <div class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-800">
-      Dashboard de gestión y seguimiento
-    </div>
-    <p class="mt-2 text-sm leading-6 text-stone-700">
-      Consulta el tablero interactivo asociado al monitoreo, seguimiento y visualización de información del Resultado 4 del proyecto.
-    </p>
-    <a
-      href="https://ctpt.maps.arcgis.com/apps/dashboards/0962a4c2f10444a2a0d87292dc6a068a"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="mt-4 inline-block rounded-2xl bg-stone-900 px-5 py-3 text-sm text-white hover:bg-stone-800">
-      Abrir dashboard del Resultado 4
-    </a>
-  </div>`:''}
-
-</div></div>${r.id==='resultado1'
+</section>`:''}<div id="${r.id}" class="mb-8 overflow-hidden rounded-[2rem] border bg-white shadow-sm grid lg:grid-cols-2"><div class="min-h-[320px] flex items-end p-6 ${i%2?'lg:order-2':''}" style="background-image:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.18)),url('${r.img}');background-size:cover;background-position:center;"><div class="rounded-2xl bg-white/20 px-4 py-3 text-white backdrop-blur-sm"><div class="text-xs uppercase tracking-[0.18em]">Sección del portal</div><div class="mt-1 text-lg font-semibold">${r.n}</div></div></div><div class="p-6 lg:p-10"><div class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-800">${r.n}</div><h3 class="mt-3 text-2xl font-bold leading-9">${r.t}</h3><p class="mt-4 leading-7 text-stone-600">${r.s}</p>${kpis[r.id]?`<div class="mt-6 grid gap-4 md:grid-cols-2">${kpis[r.id].map(kpi).join('')}</div>`:''}${indicators[r.id]?`<div class="mt-6 grid gap-4 md:grid-cols-${r.id==='resultado1'?3:2}">${indicators[r.id].map(ind).join('')}</div>`:''}</div></div>${r.id==='resultado1'
   ? `<div class="mb-8 overflow-hidden rounded-[2rem] border bg-white shadow-sm">
       <iframe
         src="https://ctpt.maps.arcgis.com/apps/dashboards/ea2db48143054fc0beece12f063496e4"
@@ -262,6 +243,31 @@ ${r.id==='resultado4'
         allowfullscreen
         loading="lazy">
       </iframe>
+    </div>`:''}${r.id==='resultado4'
+  ? `<div class="mb-8 overflow-hidden rounded-[2rem] border bg-white shadow-sm">
+      <div class="border-b bg-stone-50 px-8 py-5">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-800">Resultado 4</p>
+        <h3 class="mt-2 text-2xl font-bold text-stone-900">Gestión del Proyecto</h3>
+        <p class="mt-2 text-sm leading-6 text-stone-600">
+          Consulta el dashboard interactivo asociado a la gestión, seguimiento y administración del Proyecto RBTTF.
+        </p>
+      </div>
+      <iframe
+        src="https://ctpt.maps.arcgis.com/apps/dashboards/0962a4c2f10444a2a0d87292dc6a068a"
+        class="h-[760px] w-full"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+      <div class="border-t bg-white px-8 py-5">
+        <a
+          href="https://ctpt.maps.arcgis.com/apps/dashboards/0962a4c2f10444a2a0d87292dc6a068a"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block rounded-2xl bg-stone-900 px-5 py-3 text-sm text-white hover:bg-stone-800">
+          Abrir dashboard en pantalla completa
+        </a>
+      </div>
     </div>`:''}`).join('');
 const areasProtegidas=[
   {
