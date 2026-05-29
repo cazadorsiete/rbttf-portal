@@ -516,8 +516,7 @@ function renderAreasProtegidas(){
         <p class="mt-1 text-sm font-medium text-emerald-800">${a.categoria}</p>
         <p class="mt-3 text-sm leading-6 text-stone-600">${a.descripcion}</p>
         <div class="mt-5 flex flex-wrap gap-2 border-t border-stone-100 pt-4">
-          <a href="https://ctpt.maps.arcgis.com/apps/mapviewer/index.html?webmap=00d04a5dea6f47d89affcedad16ec672&center=-89.35142,14.556626&scale=577790.554289" target="_blank" rel="noopener noreferrer" class="rounded-2xl bg-stone-900 px-4 py-2 text-sm text-white hover:bg-stone-800">Ver mapa</a>
-          ${
+<a href="https://storymaps.arcgis.com/stories/aed04552c5944ed5b351612e123b5990" target="_blank" rel="noopener noreferrer" class="rounded-2xl bg-stone-900 px-4 py-2 text-sm text-white hover:bg-stone-800">Ver mapa</a>          ${
             a.disponible && a.ficha
             ? `<button type="button" onclick="openFichaTecnica('${a.ficha}','${a.nombre}')" class="rounded-2xl border border-emerald-200 px-4 py-2 text-sm text-emerald-800 hover:bg-emerald-50">Ficha técnica</button>`
             : `<button type="button" class="cursor-not-allowed rounded-2xl border border-stone-200 bg-stone-100 px-4 py-2 text-sm text-stone-400">Ficha pendiente</button>`
